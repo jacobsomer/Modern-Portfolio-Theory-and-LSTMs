@@ -18,7 +18,7 @@ For those who are just starting their learning journey in computational finance,
 
 ## The Dataset
 
-This project uses AlphaVantage's [API](https://www.alphavantage.co/documentation/) to get historical data. The benefits of using Alpha Vantage is that their API is free to use. The downside is that they only allow 5 API calls per minute. To account for this, I parralelized the getData() function using the multiparallel library (lines 82-86):
+This project uses AlphaVantage's [API](https://www.alphavantage.co/documentation/) to get historical data. The benefits of using Alpha Vantage is that their API is free to use. The downside is that they only allow 5 API calls per minute. To account for this, I parralelized the getData() function using the multiparallel library (lines 82-86 in trade):
 ```
 num_cores = multiprocessing.cpu_count()
 tmp = tqdm(stockList[i*5:i*5+5])
@@ -30,8 +30,9 @@ Get data returns a list of historical data for any stock symbol you give it. In 
 
 ![](NVDA_Daily.png)
 
-A first order observation of this time series (which applies to most assets on the NYSE) is that there is an exponential growth pattern to the price. 
-
-
+A first order observation of this time series (which applies to most assets on the NYSE) is that there is an exponential growth pattern to the price. I accounted this by log transforming the data before feeding it to the LSTM :
+```
+2**predictNextDay(list(map(lambda x: np.log2(x), np.array(j[0])))
+```
 (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
 
