@@ -18,7 +18,7 @@ For those who are just starting their learning journey in computational finance,
 
 ## The Dataset
 
-This project uses AlphaVantage's [API](https://www.alphavantage.co/documentation/) to get historical data. The benefits of using Alpha Vantage is that their API is free to use. The downside is that they only allow 5 API calls per minute. To optimize for time, I parralelized the getData() function using the multiparallel library (lines 82-86):
+This project uses AlphaVantage's [API](https://www.alphavantage.co/documentation/) to get historical data. The benefits of using Alpha Vantage is that their API is free to use. The downside is that they only allow 5 API calls per minute. To account for this, I parralelized the getData() function using the multiparallel library (lines 82-86):
 ```
 num_cores = multiprocessing.cpu_count()
 tmp = tqdm(stockList[i*5:i*5+5])
