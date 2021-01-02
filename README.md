@@ -5,7 +5,7 @@
 2. Forecast daily stock prices and covariance using Long Short Term Memory Networks
 3. Visualize the efficient frontier and discover new insights in the art of Stock market prediction
 
-note: if you only want to see step 3, please scroll down to the bottom
+*note: if you only want to see step 3, please scroll down to the bottom*
 
 ### Helpful resources
 For those who are just starting their learning journey in computational finance, here are some learning resources:
