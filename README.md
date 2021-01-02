@@ -26,7 +26,12 @@ tmp = tqdm(stockList[i*5:i*5+5])
 #parrallizing getting data because its faster
 stockData = Parallel(n_jobs=num_cores)(delayed(getData)(j) for j in tmp)
 ``` 
-Get data returns a list of historical data for any stock symbol you give it. In our case, get data returns the open and close price which we will later use as inputs for our returns and covariance prediction.
- 
- 
-  (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
+Get data returns a list of historical data for any stock symbol you give it. In our case, get data returns the open and close price which we will later use as inputs for our returns and covariance prediction. Here is an example dataset plotted with Matplotlib:
+
+![](NVDA_Daily.png)
+
+A first order observation of this time series (which applies to most assets on the NYSE) is that there is an exponential growth pattern to the price. 
+
+
+(https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
+
