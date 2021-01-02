@@ -2,6 +2,16 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage.filters import gaussian_filter1d
+
+from alpha_vantage.timeseries import TimeSeries
+
+ts = TimeSeries(key='YOUR_API_KEY', output_format='pandas')
+data, meta_data = ts.get_daily(symbol='NVDA', outputsize='full')
+data['4. close'].plot()
+plt.title('Daily Times Series for the NVDA stock')
+plt.savefig('MFST_Daily.png')
+plt.show()
+
 if __name__ == "__main__": 
     preds=pd.read_csv("returns.csv")
     preds=preds.rename(columns={"Unnamed: 0": "Symbols"})
