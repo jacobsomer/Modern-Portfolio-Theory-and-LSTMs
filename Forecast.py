@@ -97,7 +97,7 @@ def predictNextDay(data, activationFunction="tanh",lossFunction='mse',numberOfEp
 
 
 def getData(stock):
-    ts = TimeSeries(key='1GHGUGQXQDZ6TR3M', output_format='pandas')
+    ts = TimeSeries(key='API Key Goes Here', output_format='pandas')
     try:
         currentDataFrame=ts.get_daily(symbol=stock,outputsize='full')[0]
     except ValueError:
