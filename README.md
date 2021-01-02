@@ -3,7 +3,7 @@
 ### Goals of this project
 1. Get historical stock market data programatically through an API
 2. Forecast daily stock prices and covariance using Long Short Term Memory Networks
-3. Visualize the efficient frontier and discover new insights in the art of Stock market prediction
+3. Visualize the [Efficient Frontier](https://en.wikipedia.org/wiki/Efficient_frontier) and discover new insights in the art of Stock market prediction
 
 *note: if you only want to see step 3, please scroll down to the bottom*
 
@@ -12,7 +12,7 @@ For those who are just starting their learning journey in computational finance,
 
 * [Youtube Video on Portfolio Management by MIT](https://www.youtube.com/watch?v=8TJQhQ2GZ0Y) 
 * [Youtube Series on Machine Learning by 3Blue1Brown](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) 
-* [Time Series Forecast with Keras](https://keras.io/examples/timeseries/timeseries_weather_forecasting/) 
+* [Time Series Forecasting with Keras](https://keras.io/examples/timeseries/timeseries_weather_forecasting/) 
 * [Modern Portfolio Theory Wiki](https://en.wikipedia.org/wiki/Modern_portfolio_theory) 
 
 
