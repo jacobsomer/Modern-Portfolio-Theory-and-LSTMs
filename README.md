@@ -30,9 +30,18 @@ Get data returns a list of historical data for any stock symbol you give it. In 
 
 ![](NVDA_Daily.png)
 
-A first order observation of this time series (which applies to most assets on the NYSE) is that there is an exponential growth pattern to the price. I accounted this by log transforming the data before feeding it to the LSTM (lines 193 in Forecast.py):
+A first order observation of this time series (which applies to most assets on the NYSE) is that there is an exponential growth pattern to the price. I accounted this by log transforming the data before feeding it to the LSTM (line 193 in Forecast.py):
 ```
 2**predictNextDay(list(map(lambda x: np.log2(x), np.array(j[0])))
 ```
+
+`np.array(j[0])` is a numpy array of historical prices. predictNextDay() is a function that trains our neural net and outputs a prediction for the next day. Inside the function, we use the sklearn MinMaxScaler() to scale our data from 0 to 1 which is necessary as our LSTM's reccurent activation layer uses a sigmoid function (lines 55-57 in Forecast.py):
+```
+scaler = MinMaxScaler()
+scaler = scaler.fit((np.array(data)).reshape(-1, 1))
+data_scaled = scaler.transform((np.array(data)).reshape(-1, 1))
+```
+
+## The Long Short-Term Memory Network
 (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
 
