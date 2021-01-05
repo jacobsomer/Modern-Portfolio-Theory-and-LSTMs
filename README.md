@@ -44,7 +44,24 @@ data_scaled = scaler.transform((np.array(data)).reshape(-1, 1))
 
 ## The Long Short-Term Memory Network
 
-The reason for using an [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) is because it has a fairly good track record when it comes to time-series forecasting. Unlike a traditional [Reccurent Neural Network](https://colah.github.io/posts/2015-08-Understanding-LSTMs/), the lstm maintains both a cell state and a hidden state to pass contextual information. Basically, an [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) is an [RNN](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) with gates. Here is an image to demonstrate
+The reason for using an [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) is because it has a fairly good track record when it comes to time-series forecasting. Unlike a traditional [Reccurent Neural Network](https://colah.github.io/posts/2015-08-Understanding-LSTMs/), the lstm maintains both a cell state and a hidden state to pass contextual information. Basically, an [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) is an [RNN](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) with gates. Here is an image to demonstrate the input, forget, output, and tanh layers respectively. Each of the first four functions represent a neural network. The last two functions represent the output cell state and hidden state to be passed on to the next [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) layer. 
+
+![](Structure-of-the-LSTM-cell-and-equations-that-describe-the-gates-of-an-LSTM-cell.jpg)
+
+Luckily for us, Keras provides an easy to use API that does all of these operations given properly formatted data. We can even customize our activation functions with something like [RELU](https://www.google.com/search?q=relu&oq=relu&aqs=chrome.0.69i59j0i433i457j0i433l5j0.727j0j7&sourceid=chrome&ie=UTF-8) or [Sotftmax](https://en.wikipedia.org/wiki/Softmax_function), but for this project, I used [GPU compute](https://developer.nvidia.com/CUDNN) which requires our LSTM to have the feutures below: 
+```
+activation == tanh
+recurrent_activation == sigmoid
+recurrent_dropout == 0
+unroll is False
+use_bias is True
+Inputs, if use masking, are strictly right-padded.
+Eager execution is enabled in the outermost context.
+```
+In order to achieve better results given these requirements, I had to spend more time preprocessing (Log and MinMax scaling). This was important as it cut down overall execution time nearly 6 fold. It also used an average of 24% of my CPU rather than the 100% it was using without [GPU](https://developer.nvidia.com/CUDNN). Below I've posted the code for the entire predictNextDay() function to see the whole thing in action:
+```
+
+``` 
+
 
 (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
-
