@@ -187,7 +187,7 @@ Now that we have returns and our covariance matrix, we can use the [Efficient Ma
 
 
 ![Alt text](./portfolio.svg)
-<img src="portfolio.svg" position="center" style="background-color:green" >
+<img src="portfolio.png" position="center" >
 
 
 (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
