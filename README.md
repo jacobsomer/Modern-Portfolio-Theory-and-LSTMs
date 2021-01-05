@@ -185,7 +185,9 @@ I then predicted covariance for each asset that had positive returns.
 ```
 Now that we have returns and our covariance matrix, we can use the [Efficient Market Hypothesis](https://en.wikipedia.org/wiki/Modern_portfolio_theory) to get the variance and and returns of our entire portfolio. Portofolio variance is caluculated by this
 
-![](portfolio.svg)
+
+![Alt text](portfolio.svg)
+<img src="portfolio.svg" position="center">
 
 
 (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
