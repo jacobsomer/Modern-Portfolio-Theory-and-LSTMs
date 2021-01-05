@@ -194,8 +194,19 @@ I computed this in code with the covariance [Pandas Dataframe](https://pandas.py
 var = covariance.mul(myDict, axis=0).mul(myDict, axis=1).sum().sum()
 ```
 
-Returns can be calculating by computing the weighted sum of the percent returns. Once we have returns and covariance for a portfolio, we can finally plot the efficient frontier and Sharpe's Ratio:
+Returns can be calculating by computing the weighted sum of the percent returns. Once we have returns and covariance for a portfolio, we can finally get the Sharpe Ratio of the portfolio:
 
-![](SharpeRatio.png)
+<img src="SharpeRatio.png" alt="drawing" width="400"/>
 
-![](cover.png)
+
+Here we can see a gaussian distributed efficient frontier in red with color coded points to represent the Sharpe ratio.
+
+
+<img src="cover.png" alt="drawing"/>
+
+
+## Final Thoughts
+
+Modern Portfolio Theory is fascinating and powerful. This project only represents a glimmer of possibility when it comes to asset management/computing. Moving forward, I will explore creative ways to feed data hungry machine learning algorithms. More specifically, I wish to use alternative data sources (i.e. twitter, weather, nowcasts etc...) and more complex algorithms (i.e. attention, sequence to sequence, and single shot models) to predict future human behavior. That way, when we rebuild the above chart, our returns will be more accurate along with the portfolio standard deviation. Either way, I am satisfied with the progress of this project, and I look forward to buiilding better models as I pursue my academic interests in Computer Science and Economics. 
+
+
