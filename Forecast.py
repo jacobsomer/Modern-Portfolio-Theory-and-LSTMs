@@ -52,42 +52,37 @@ def getCovariance(asset1,asset2):
     return predictNextDay(covarianceTimeSeries, activationFunction="tanh")
 
 def predictNextDay(data, activationFunction="tanh",lossFunction='mse',numberOfEpochs=10):
+    
     scaler = MinMaxScaler()
     scaler = scaler.fit((np.array(data)).reshape(-1, 1))
     data_scaled = scaler.transform((np.array(data)).reshape(-1, 1))
+    
+    #--------- the separated code was modified from https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/ ------
     def split_sequence(sequence, n_steps):
         X, y = list(), list()
         for i in range(len(sequence)):
-            # find the end of this pattern
             end_ix = i + n_steps
-            # check if we are beyond the sequence
             if end_ix > len(sequence)-1:
                 break
-            # gather input and output parts of the pattern
             seq_x, seq_y = sequence[i:end_ix], sequence[end_ix]
             X.append(seq_x)
             y.append(seq_y)
         return np.array(X), np.array(y)
-    
-    # define input sequence
     raw_seq = data_scaled
-    # choose a number of time steps
     n_steps = 50
-    # split into samples
     X, y = split_sequence(raw_seq, n_steps)
-    # reshape from [samples, timesteps] into [samples, timesteps, features]
     n_features = 1
     X = X.reshape((X.shape[0], X.shape[1], n_features))
-    # define model
+    #------------------------------------------------------------------------------------------------------------------------------------------
+    
     model = Sequential()
-    model.add(LSTM(128, activation= activationFunction, input_shape=(n_steps, n_features),return_sequences=False))
-    # model.add(LSTM(128, activation=activationFunction, input_shape=(n_steps, n_features),return_sequences=False))
-    # model.add(Dropout(0.2))
+    model.add(LSTM(128, activation= activationFunction, input_shape=(n_steps, n_features),return_sequences=False))    
     model.add(Dense(1))
     opt = keras.optimizers.Adam(learning_rate=0.001)
     model.compile(optimizer=opt, loss=lossFunction)
-    # fit model
+    
     history = model.fit(X, y, epochs=numberOfEpochs,batch_size=256,validation_split=0.1, verbose=1)
+    
     x_input = data_scaled[-50:]
     x_input = x_input.reshape((1, n_steps, n_features))
     forecast = model.predict(x_input, verbose=0)
