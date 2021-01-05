@@ -183,9 +183,13 @@ I then predicted covariance for each asset that had positive returns.
 |FUBO  |0.158472    |0.2594718   |-0.11976863 |0.11726539  |-0.046137955|0.027473297 |0.07873135  |0.21692227 |0.25948897 |0.27513784  |0.23939371 |0.07400232  |0.013048089 |-0.11820875 |-0.05895136 |0.3663759   |0.2854224   |-0.04859155 |-0.06446629 |0.31739587 |0.6754939   |0.282633    |0.1321116  |0.23503174  |0.17920262  |0.2212446   |1       
 
 ```
-Now that we have returns and our covariance matrix, we can use the [Efficient Market Hypothesis](https://en.wikipedia.org/wiki/Modern_portfolio_theory) to get the variance and and returns of our entire portfolio. Portofolio variance is caluculated by this
+Now that we have returns and our covariance matrix, we can use the [Efficient Market Hypothesis](https://en.wikipedia.org/wiki/Modern_portfolio_theory) to get the variance and and returns of our entire portfolio. Portofolio variance is caluculated by this:
 
 
 <img src="portfolio.png" alt="drawing" width="400"/>
 
-(https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
+I computed this in code with the covariance [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) using the following code (line 33 in analyze.py): 
+
+```
+var = covariance.mul(myDict, axis=0).mul(myDict, axis=1).sum().sum()
+```
