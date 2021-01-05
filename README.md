@@ -193,3 +193,9 @@ I computed this in code with the covariance [Pandas Dataframe](https://pandas.py
 ```
 var = covariance.mul(myDict, axis=0).mul(myDict, axis=1).sum().sum()
 ```
+
+Returns can be calculating by computing the weighted sum of the percent returns. Once we have returns and covariance for a portfolio, we can finally plot the efficient frontier and Sharpe's Ratio:
+
+![](SharpeRatio.png)
+
+![](cover.png)
