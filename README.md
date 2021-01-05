@@ -43,5 +43,8 @@ data_scaled = scaler.transform((np.array(data)).reshape(-1, 1))
 ```
 
 ## The Long Short-Term Memory Network
+
+The reason for using an [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) is because it has a fairly good track record when it comes to time-series forecasting. Unlike a traditional [Reccurent Neural Network](https://colah.github.io/posts/2015-08-Understanding-LSTMs/), the lstm maintains both a cell state and a hidden state to pass contextual information. Basically, an [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) is an [RNN](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) with gates. Here is an image to demonstrate
+
 (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 
 
